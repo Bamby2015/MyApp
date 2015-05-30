@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <script src="scripts/hello.js"></script>
+</head>
+<body>
+    <table id="datos">
+    <caption>
+    </caption>
+        <tr>
+            <td>
+                Usarname:
+            </td>
+            <td>
+                <input id="txtUser" maxlength="50"/>
+            </td>
+        </tr>
+       
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input id="txtPassword" type="password" maxlength="12"/>
+            </td>
+        </tr>
+    </table>
+    <table align="center">
+        <tr>
+            <td>
+                <input id="btnRegistrar" type="button" value="Registrarse Gratis" onclick="registrar()"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id='facebook' type="button" value="facebook" onclick="hello.login('facebook')" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id='google' type="button" value="google" onclick="hello.login('google')" />
+            </td>
+        </tr>       
+            
+</table>
+    <script language="javascript" type="text/javascript">
+        function registrar() {
+            alert("registrar");
+        }       
+    </script>
+    <script>
+    hello.init({
+        facebook: '421635961351610',
+        windows: 'WINDOWS_CLIENT_ID',
+        google: '329398342012-705o9s05rimq3tmj9i2uhmujeake8t7m.apps.googleusercontent.com'
+    }, { redirect_uri: 'http://localhost/gplus/oauth2callback.html' });
+
+    </script>
+    <script class="pre">
+        hello.on('auth.login', function (auth) {
+
+            // Call user information, for the given network
+            hello(auth.network).api('/me').then(function (r) {
+                // Inject it into the container
+                /*
+                var label = document.getElementById('profile_' + auth.network);
+                if (!label) {
+                    label = document.createElement('div');
+                    label.id = 'profile_' + auth.network;
+                    document.getElementById('profile').appendChild(label);
+                }
+                label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
+                */
+                var label = document.getElementById('username');
+                label.value = "aaaa"
+            });
+        });
+    </script>
+</body>
+</html>
